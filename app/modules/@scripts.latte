@@ -1,0 +1,15 @@
+<script>
+    var pub_url = "{$presenter->template->pubUrl|noescape}";
+</script>
+<script type="text/javascript" src="{$nodeUrl}/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/nette.ajax.js/nette.ajax.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/live-form-validation/live-form-validation.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/lightbox2/dist/js/lightbox.min.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/owl.carousel/dist/owl.carousel.min.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/numeral/min/numeral.min.js"></script>
+<script type="text/javascript" src="{$nodeUrl}/lazysizes/lazysizes.min.js" async=""></script>
+<script type="text/javascript"  src="{$pubUrl}/js/script.min.js?{$ts}"></script>
+{block scripts}
+{/block}
+{$settings->scripts_footer|noescape}

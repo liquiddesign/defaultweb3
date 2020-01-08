@@ -1,0 +1,45 @@
+@import "front-colors";
+
+$image-padding: 10px;
+
+.gallery {
+  margin-left: -$image-padding;
+  margin-right: -$image-padding;
+}
+
+.gallery-image {
+  padding: $image-padding;
+
+  &:hover {
+    .gallery-image-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.gallery-image-cover {
+  display: none;
+  font-size: 50px;
+  color: white;
+  background-color: rgba(0,0,0,.6);
+  left: $image-padding;
+  top: $image-padding;
+  width: calc(100% - #{$image-padding * 2});
+  height: calc(100% - #{$image-padding * 2});
+}
+
+.gallery-image-icon {
+  width: 30%;
+}
+
+@media (min-width: 768px) {
+  .gallery-image-cover {
+    font-size: 100px;
+  }
+}

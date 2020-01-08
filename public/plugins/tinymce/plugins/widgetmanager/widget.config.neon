@@ -1,0 +1,44 @@
+#table_name = tabulka v databázi
+#label = pojmenování na webu
+#link = adresa v tinymce (ex.: [widget]tabs=zo0[/widget])
+widget:
+	gallery:
+		tableName: web_gallery
+		label: Galerie
+		link: gallery
+	tabs:
+		tableName: web_tab
+		label: Taby
+		link: tabs
+	maps:
+		tableName: web_map
+		label: Mapy
+		link: maps
+	video:
+		tableName: web_video
+		label: Video
+		link: video
+	carousel:
+		tableName: web_carousel
+		label: Carousely
+		link: carousel
+	faq:
+		tableName: web_faq
+		label: Faq
+		link: faq
+	testimonials:
+		tableName: web_testimonial
+		label: Testimonials
+		link: testimonial
+	poll:
+		tableName: poll_poll
+		label: Ankety
+		link: poll
+
+# kontroly, ktere nejsou widgety, ale mame je v PresenterTraite
+control:
+	contactForm:
+		name: 'Kontaktní formulář'
+		link: 'contactForm'
+		anchor: '/admin/web/setting/email'
+		link-name: 'Email šablony'

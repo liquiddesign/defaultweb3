@@ -1,0 +1,35 @@
+@import "front-colors";
+@import "front-mixins";
+
+.breadcrumb-wrapper {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.breadcrumb {
+  @include display-flex;
+  flex-wrap: wrap;
+  //padding: .75rem 1rem;
+  padding: .75rem 0 1rem;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb-item {
+  font-size: 1.2rem;
+
+  &+.breadcrumb-item {
+    padding-left: .5rem;
+
+    &::before {
+      color: #888;
+      content: '›';
+      display: inline-block;
+      padding: 0 .25rem;
+    }
+
+    &:last-child {
+      color: #888;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+$color-main: #333;
+$color-basic: #f0f0f0;
+$color--primary: #2e86de;
+$color--success: #1dd1a1;
+$color--secondary: #576574;
+$color--warning: #ff9f43;
+$color--danger: #ee5253;
+$color-link: $color--primary;
+
+/* Blocks */
+$color-block-blue: rgba(218,241,255,1);
+$color-block-yellow: rgba(255,240,206,1);
+$color-block-grey: rgba(241, 241, 241, 1);
+$color-lqd: #2e86de;
+
+$color-cite: #888;
+$color-highlight-green: #18c5c3;
+$color-highlight-red: #ff6464;
+
+/* Buttons */
+$color-button: white;
+$color-button--primary: white;
+$color-button--success: white;
+$color-button--secondary: white;
+$color-button--warning: white;
+$color-button--danger: white;
+$bg-button: $color--primary;
+$bg-button--primary: $color--primary;
+$bg-button--success: $color--success;
+$bg-button--secondary: $color--secondary;
+$bg-button--warning: $color--warning;
+$bg-button--danger: $color--danger;
+$bg-button--clear: transparent;
+$bg-button--bordered: transparent;
+
+/* Alerts */
+$color-alert--primary: white;
+$color-alert--success: white;
+$color-alert--secondary: lighten($color--success, 0);
+$color-alert--warning: white;
+$color-alert--danger: white;
+
+$bg-alert: #eee;
+$bg-alert--primary: lighten($color--primary, 0);
+$bg-alert--success: white;
+$bg-alert--secondary: lighten($color--secondary, 0);
+$bg-alert--warning: lighten($color--warning, 0);
+$bg-alert--danger: lighten($color--danger, 0);
+
+/* MENU */
+$color-menu: $color-main;
+$bg-menu: #fff;
+$color-menu-link-border: #eee;
+
+/* Tables */
+$bg-border-table : #eee;
+
+/* Footer */
+$bg-footer: #081725;
+
+/*Faq*/
+$faq-bg-color: rgba(242, 242, 242, 1);

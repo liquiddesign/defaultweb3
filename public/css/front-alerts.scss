@@ -1,0 +1,104 @@
+@import "front-colors";
+@import "front-variables";
+
+$alert-color: #777;
+$alert-sub-color: #777;
+
+$alert-font-weight: normal;
+$alert-font-size--mobile: 14px;
+$alert-font-size--tablet: 16px;
+$alert-font-size--desktop: 16px;
+
+
+$alert-border-color: #000;
+$alert-border: 4px solid $alert-border-color;
+
+$alert-padding: 30px 30px 30px 70px;
+$alert-margin: 10px 0 16px 0;
+$alert-bg: #fff;
+
+$alert--success: #1dd1a1;
+$alert--danger: #ff6464;
+$alert--warning: #ff9f43;
+$alert--info: #2e86de;
+
+@mixin alertIcon($color, $fontAwesomeIconCode)
+{
+  &:before,
+  &::before {
+    color: $color;
+    content: '#{$fontAwesomeIconCode}';
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 30px;
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 900;
+  }
+}
+
+.alert {
+  position: relative;
+  font-size: $alert-font-size--mobile;
+  font-weight: $alert-font-weight;
+  line-height: 1.5;
+  color: $alert-color;
+  background-color: $alert-bg;
+  padding: $alert-padding;
+  border-left: $alert-border;
+  margin: $alert-margin;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+
+  .sub-message {
+    color: $alert-sub-color;
+    font-weight: normal;
+    line-height: 1.25;
+  }
+
+  &--danger {
+    border-color: $alert--danger;
+    @include alertIcon($alert--danger, '\f06a');
+  }
+
+  &--warning {
+    border-color: $alert--warning;
+    @include alertIcon($alert--warning, '\f071');
+  }
+
+  &--info {
+    border-color: $alert--info;
+    @include alertIcon($alert--info, '\f05a');
+  }
+
+  &--success {
+    border-color: $alert--success;
+    @include alertIcon($alert--success, '\f058');
+  }
+
+  &--dismissible {
+    .close {
+      font-size: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .75rem 1.25rem;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .alert {
+    font-size: $alert-font-size--tablet;
+  }
+}
+
+@media (min-width: 992px) {
+  .alert {
+    font-size: $alert-font-size--desktop;
+  }
+}

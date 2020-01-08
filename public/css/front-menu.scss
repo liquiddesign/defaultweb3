@@ -1,0 +1,561 @@
+@import "front-colors";
+@import "front-mixins";
+
+/***** Special query variables  *****/
+$menu-width--iphone5s: 280px;
+$menu-width--mobile: 300px;
+
+/***** Menu Logo *****/
+$mobile-menu-logo__height: 60px;
+$desktop-menu-logo__height: 60px;
+
+/***** Navigation *****/
+$mobile-navigation__padding: 15px 0;
+
+$desktop-navigation__padding: 0;
+
+
+/***** Menu Panel *****/
+$mobile-menu-panel__bg: transparent;
+$mobile-menu-panel__border: 1px solid #eee;
+$mobile-menu-panel__bg--scrolled: #081725;
+
+/***** Menu (this color is reseted to transparent on desktop, because bg of menu determines MENU PANEL *****/
+$mobile-menu__bg: #fff;
+$desktop-menu__bg: transparent; // desktop
+
+/*****  Menu Toggler (hamburger button) *****/
+$mobile-menu-toggler__color: #2e86de;
+$mobile-menu-toggler__color--homepage: #fff;
+
+/***** Menu Toggler Icon (hamburger icon) *****/
+$mobile-menu-toggler-icon__font-size: 24px;
+
+
+/*****  Menu Link *****/
+$mobile-menu-link__size: 16px;
+$mobile-menu-link__color: #2e86de;
+$mobile-menu-link__bg: #fff;
+$mobile-menu-link__padding: 16px;
+$mobile-menu-link__text-decoration: none;
+$mobile-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
+$mobile-menu-link__border-color: #eee;
+$mobile-menu-link__weight: bold;
+// -- active state
+$mobile-menu-link__color--active: #fff;
+$mobile-menu-link__text-decoration--active: none;
+$mobile-menu-link__border--active: 1px solid; // Use only this format (size type) Don't use color
+$mobile-menu-link__border-color--active: #2569ae;
+$mobile-menu-link__bg--active: #2e86de;
+$mobile-menu-link__weight--active: bold;
+// - desktop
+$desktop-menu-link__size: 16px;
+$desktop-menu-link__color: #2e86de;
+$desktop-menu-link__bg: transparent;
+$desktop-menu-link__padding: 0 30px;
+$desktop-menu-link__border: 0 solid;
+$desktop-menu-link__border-color: transparent;
+$desktop-menu-link__weight: 600;
+$desktop-menu-link-height-ratio: 30px;
+// - desktop --active + hover
+$desktop-menu-link__color--active: #2569ae;
+$desktop-menu-link__border--active: 0px solid; // Use only this format (size type) Don't use color
+$desktop-menu-link__border-color--active: transparent;
+$desktop-menu-link__bg--active: transparent;
+$desktop-menu-link__text-decoration--active: none;
+$desktop-menu-link__weight--active: 600;
+
+/***** Menu link BORDER (gives border on hover and active menu-link, works only on desktop) *****/
+$desktop-menu-link-border__border-top: 4px solid transparent;
+// --active
+$desktop-menu-link-border__border-top--active: 4px solid #2569ae;
+// -- active on homepage
+$desktop-menu-link-border__border-top--homepage: 4px solid #fff;;
+// -- active on scroll
+$desktop-menu-link-border__border-top--scroll: 4px solid #fff;
+
+/*****  Secondary Menu (dropdown) *****/
+$mobile-secondary-menu__border: 0; // or whole Format: 1px solid red; has to be used
+$mobile-secondary-menu__border-radius: 0;
+$mobile-secondary-menu__padding: 0;
+$mobile-secondary-menu__margin: 0;
+// - desktop
+$desktop-secondary-menu__border: 1px solid #ccc; // or Format: 1px solid red; has to be used
+$desktop-secondary-menu__border-radius: 6px;
+$desktop-secondary-menu__padding: 0;
+$desktop-secondary-menu__margin: 0;
+
+/***** Secondary Menu Link (links in secondary menu) *****/
+$mobile-secondary-menu-link__color: #2569ae;
+$mobile-secondary-menu-link__bg: #eee;
+$mobile-secondary-menu-link__padding: 10px 10px 10px 30px;
+$mobile-secondary-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
+$mobile-secondary-menu-link__border-color: #ddd;
+// --active state
+$mobile-secondary-menu-link__color--active: #fff;
+$mobile-secondary-menu-link__bg--active: #2e86de;
+$mobile-secondary-menu-link__padding--active: 10px 10px 10px 30px;
+$mobile-secondary-menu-link__border--active: 1px solid; // Use only this format (size type) Don't use color
+$mobile-secondary-menu-link__border-color--active: #2569ae;
+// desktop
+$desktop-secondary-menu-link_font-size: 14px;
+$desktop-secondary-menu-link__color: #2569ae;
+$desktop-secondary-menu-link__bg: #fff;
+$desktop-secondary-menu-link__padding: 12px 40px 12px 24px;
+$desktop-secondary-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
+$desktop-secondary-menu-link__border-color: #ddd;
+// desktop --active + hover
+$desktop-secondary-menu-link__color--active: #fff;
+$desktop-secondary-menu-link__bg--active: #1c4e82;
+$desktop-secondary-menu-link__padding--active: $desktop-secondary-menu-link__padding;
+$desktop-secondary-menu-link__border--active: 1px solid; // Use only this format (size type) Don't use color
+$desktop-secondary-menu-link__border-color--active: transparent;
+
+/***** Menu *****/
+$bg-menu--mobile: #fff;
+$bg-menu--desktop: #fff;
+
+
+.navigation {
+  padding: $mobile-navigation__padding;
+}
+
+header {
+  &.position-absolute {
+    .menu-panel {
+      border-bottom: none;
+
+      .menu-logo {
+        &[data-logo="1"] {
+          display: block;
+        }
+
+        &[data-logo="2"] {
+          display: none;
+        }
+      }
+
+      &.scrolled {
+        .menu-logo {
+          &[data-logo="1"] {
+            display: block;
+          }
+
+          &[data-logo="2"] {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .menu-toggler {
+      color: $mobile-menu-toggler__color--homepage;
+    }
+
+    .menu-toggler-icon {
+      color: $mobile-menu-toggler__color--homepage;
+    }
+  }
+}
+
+.menu-panel {
+  background-color: $mobile-menu-panel__bg;
+  border-bottom: $mobile-menu-panel__border;
+
+  &.scrolled {
+    background-color: $mobile-menu-panel__bg--scrolled;
+
+    .menu-logo {
+      &[data-logo="1"] {
+        display: block;
+      }
+
+      &[data-logo="2"] {
+        display: none;
+      }
+    }
+  }
+
+  &:not(.scrolled) {
+    .menu-logo {
+      &[data-logo="1"] {
+        display: none;
+      }
+
+      &[data-logo="2"] {
+        display: block;
+      }
+    }
+  }
+}
+
+// Transition and fixed positon is declared on media query "@media (max-width: 375px)" and "@media (min-width: 375px) and (max-width: 991px)"
+.menu {
+  background-color: $mobile-menu__bg;
+}
+
+.menu-logo {
+  height: $mobile-menu-logo__height;
+}
+
+.menu-toggler {
+  color: $mobile-menu-toggler__color;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+
+  &:focus {
+    color: darken($mobile-menu-toggler__color, 5);
+    outline: none;
+    background-color: transparent;
+  }
+}
+
+.menu-toggler-icon {
+  color: $mobile-menu-toggler__color;
+  font-size: $mobile-menu-toggler-icon__font-size;
+}
+
+.menu-link {
+  @include display-flex();
+  font-size: $mobile-menu-link__size;
+  color: $mobile-menu-link__color;
+  border-bottom: $mobile-menu-link__border $mobile-menu-link__border-color;
+  background-color: $mobile-menu-link__bg;
+  text-decoration: $mobile-menu-link__text-decoration;
+  align-items: center;
+  justify-content: flex-start;
+  padding: $mobile-menu-link__padding;
+  font-weight: $mobile-menu-link__weight;
+  // Active state implemented in @media(max-width: 991px)
+}
+
+.secondary-menu {
+  border: $mobile-secondary-menu__border;
+  border-radius: $mobile-secondary-menu__border-radius;
+}
+
+.secondary-menu-link {
+  @include display-flex();
+  color: $mobile-secondary-menu-link__color;
+  background-color: $mobile-secondary-menu-link__bg;
+  padding: $mobile-secondary-menu-link__padding;
+  border-bottom: $mobile-secondary-menu-link__border $mobile-secondary-menu-link__border-color;
+  // Active state implemented in @media(max-width: 991px)
+}
+
+.menu-close {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.8);
+  z-index: 9;
+}
+
+.menu-close-button {
+  color: #fff;
+  font-size: 30px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  -webkit-transform: translate3d(100%, 0, 1000px);
+  -moz-transform: translate3d(100%, 0, 1000px);
+  -ms-transform: translate3d(100%, 0, 1000px);
+  -o-transform: translate3d(100%, 0, 1000px);
+  transform: translate3d(100%, 0, 1000px);
+  z-index: 9999;
+  top: 10px;
+  right: 0;
+  cursor: pointer;
+
+  &.show {
+    right: #{$menu-width--iphone5s + 30px};
+  }
+}
+
+.language-switcher {
+  padding: $mobile-menu-link__padding;
+  border-top: 4px solid transparent;
+}
+
+.language-icon {
+  margin-right: 8px;
+}
+
+// For iPhone 5s
+@media (max-width: 375px) {
+  .menu {
+    width: #{$menu-width--iphone5s - 20px};
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-transform: translate3d($menu-width--iphone5s, 0, 1000px);
+    -moz-transform: translate3d($menu-width--iphone5s, 0, 1000px);
+    -ms-transform: translate3d($menu-width--iphone5s, 0, 1000px);
+    -o-transform: translate3d($menu-width--iphone5s, 0, 1000px);
+    transform: translate3d($menu-width--iphone5s, 0, 1000px);
+
+    &.show {
+      right: $menu-width--iphone5s;
+    }
+  }
+}
+
+// For most of mobiles + tablets
+@media (min-width: 375px) and (max-width: 991px) {
+  .menu {
+    width: #{$menu-width--mobile - 20px};
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-transform: translate3d($menu-width--mobile, 0, 1000px);
+    -moz-transform: translate3d($menu-width--mobile, 0, 1000px);
+    -ms-transform: translate3d($menu-width--mobile, 0, 1000px);
+    -o-transform: translate3d($menu-width--mobile, 0, 1000px);
+    transform: translate3d($menu-width--mobile, 0, 1000px);
+
+    &.show {
+      right: $menu-width--mobile;
+    }
+  }
+
+  .menu-close-button {
+    &.show {
+      right: #{$menu-width--mobile + 30px};
+    }
+  }
+
+  .menu-link {
+    &:not([aria-expanded]) {
+      &:hover,
+      &.active {
+        color: $mobile-menu-link__color--active;
+        background-color: $mobile-menu-link__bg--active;
+        border-bottom: $mobile-menu-link__border--active $mobile-menu-link__border-color--active;
+        text-decoration: $mobile-menu-link__text-decoration--active;
+        font-weight: $mobile-menu-link__weight--active;
+      }
+    }
+  }
+
+  .secondary-menu-link {
+    &.active {
+      color: $mobile-secondary-menu-link__color--active;
+      background-color: $mobile-secondary-menu-link__bg--active;
+      padding: $mobile-secondary-menu-link__padding--active;
+      border-bottom: $mobile-secondary-menu-link__border--active $mobile-secondary-menu-link__border-color--active;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .secondary-menu {
+    width: 100%;
+    top: 0;
+    right: 0;
+    position: relative !important;
+    transform: none !important;
+    padding: $mobile-secondary-menu__padding;
+    margin: $mobile-secondary-menu__margin;
+  }
+
+  header.position-absolute {
+    .menu-panel:not(.scrolled) {
+      .menu-toggler,
+      .menu-toggler-icon {
+        color: white;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .navigation {
+    padding: $desktop-navigation__padding;
+  }
+
+  .menu {
+    background-color: $desktop-menu__bg;
+  }
+
+  .menu-panel {
+    padding: 20px 0;
+  }
+
+  .menu-logo {
+    height: $desktop-menu-logo__height;
+  }
+
+  .menu-link {
+    font-size: $desktop-menu-link__size;
+    color: $desktop-menu-link__color;
+    background-color: $desktop-menu-link__bg;
+    padding: $desktop-menu-link__padding;
+    border-bottom: $desktop-menu-link__border $desktop-menu-link__border-color;
+    font-weight: $desktop-menu-link__weight;
+    white-space: nowrap;
+
+    &.active,
+    &:hover {
+      color: $desktop-menu-link__color--active;
+      background-color: $desktop-menu-link__bg--active;
+      border: $desktop-menu-link__border--active $desktop-menu-link__border-color--active;
+      text-decoration: $desktop-menu-link__text-decoration--active;
+      font-weight: $desktop-menu-link__weight--active;
+    }
+  }
+
+  .secondary-menu {
+    border: $desktop-secondary-menu__border;
+    border-radius: $desktop-secondary-menu__border-radius;
+    padding: $desktop-secondary-menu__padding;
+    margin: $desktop-secondary-menu__margin;
+    top: 25px !important;
+    white-space: nowrap;
+
+    .secondary-menu-link {
+      font-size: $desktop-secondary-menu-link_font-size;
+      border-top-left-radius: $desktop-secondary-menu__border-radius;
+      border-top-right-radius: $desktop-secondary-menu__border-radius;
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: $desktop-secondary-menu__border-radius;
+        border-bottom-right-radius: $desktop-secondary-menu__border-radius;
+        border-color: transparent;
+      }
+    }
+  }
+  
+  .secondary-menu-link {
+    color: $desktop-secondary-menu-link__color;
+    background-color: $desktop-secondary-menu-link__bg;
+    padding: $desktop-secondary-menu-link__padding;
+    border-bottom: $desktop-secondary-menu-link__border $desktop-secondary-menu-link__border-color;
+
+    &:hover,
+    &.active {
+      color: $desktop-secondary-menu-link__color--active;
+      background-color: $desktop-secondary-menu-link__bg--active;
+      padding: $desktop-secondary-menu-link__padding--active;
+      border-bottom: $desktop-secondary-menu-link__border--active $desktop-secondary-menu-link__border-color--active;
+      text-decoration: none;
+    }
+  }
+
+  .menu-link-border {
+    border-top: $desktop-menu-link-border__border-top;
+  }
+
+  .menu-panel {
+    background-color: $mobile-menu-panel__bg;
+    border-bottom: $mobile-menu-panel__border;
+
+    &.scrolled {
+      background-color: $mobile-menu-panel__bg--scrolled;
+    }
+  }
+
+  header.position-absolute {
+    .menu-panel {
+      &:not(.scrolled) {
+        .menu {
+          background-color: transparent;
+        }
+
+        .menu-link {
+          color: #888;
+          background-color: transparent;
+
+          &.active,
+          &:hover,
+          &:focus {
+            color: white;
+          }
+        }
+
+        .menu-link-border {
+          &:focus,
+          &:hover,
+          &.active {
+            border-top: $desktop-menu-link-border__border-top--homepage;
+          }
+        }
+
+        .menu-logo {
+          &[data-logo="1"] {
+            display: block;
+          }
+
+          &[data-logo="2"] {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-panel {
+    &.scrolled {
+      .menu-link {
+        color: #888;
+
+        &.active,
+        &:hover,
+        &:focus {
+          color: white;
+        }
+      }
+
+      .menu-link-border {
+        &:hover,
+        &.active {
+          border-top: $desktop-menu-link-border__border-top--scroll;
+        }
+      }
+
+      .menu-logo {
+        &[data-logo="1"] {
+          display: block;
+        }
+
+        &[data-logo="2"] {
+          display: none;
+        }
+      }
+    }
+
+    &:not(.scrolled) {
+      .menu-link-border {
+        &:hover,
+        &.active {
+          border-top: $desktop-menu-link-border__border-top--active;
+        }
+      }
+
+      .menu-logo {
+        &[data-logo="1"] {
+          display: none;
+        }
+
+        &[data-logo="2"] {
+          display: block;
+        }
+      }
+    }
+  }
+}

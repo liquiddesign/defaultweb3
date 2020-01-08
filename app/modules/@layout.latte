@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{$lang}">
+{include '@head.latte'}
+<body>
+
+<!-- HEADER -->
+<header id="menu" class="header-shadow">
+    {control menu}
+</header>
+
+<!-- CONTENT -->
+<main>
+    {block content}
+    {/block}
+</main>
+
+<!-- PRE FOOTER -->
+<div class="footer-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {$footer->text|shortcode|noescape}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <span class="pull-right small" style="margin: 10px 0px; ">&copy; Liquid Design s.r.o. | support
+					<a href="mailto:servis@lqd.cz">servis@lqd.cz</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+{include '@scripts.latte'}
+</body>
+</html>

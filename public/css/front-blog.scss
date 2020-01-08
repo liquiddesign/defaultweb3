@@ -1,0 +1,106 @@
+.blog-preview-categories {
+  margin-bottom: 40px;
+}
+
+.blog-preview {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.blog-preview-image {
+  &:hover {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.blog-preview-title {
+  font-size: 24px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+
+  &:hover {
+    color: #267BCF;
+  }
+}
+
+.blog-preview-date {
+  font-size: .75rem;
+  color: #888;
+  margin: 5px 0 10px 0;
+}
+
+.blog-preview-perex {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.blog-detail-perex {
+  font-weight: 300;
+}
+
+.blog-preview-button {
+  color: #267BCF;
+  font-weight: 600;
+
+  &--active,
+  &:hover {
+    color: darken(#267BCF, 10);
+  }
+}
+
+.blog-detail-title {
+  margin-bottom: 10px;
+}
+
+.blog-preview-price {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.blog-detail-price {
+  font-size: 38px;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .blog-preview-image {
+    width: 250px;
+  }
+
+  .blog-preview-info {
+    margin-left: 30px;
+  }
+
+  .blog-detail-title {
+    margin-top: 20px !important;
+  }
+
+  .blog-detail-price-panel {
+    margin-top: 40px;
+  }
+
+  .blog-detail-price {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .blog-preview-title {
+    margin-top: 0;
+  }
+
+  .blog-detail-title {
+    margin-top: 0;
+    font-size: 52px;
+  }
+
+  .blog-detail-gallery-image {
+    width: 16.66666%;
+  }
+
+  .blog-detail-perex {
+    font-size: 20px;
+  }
+}

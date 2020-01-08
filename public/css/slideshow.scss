@@ -1,0 +1,61 @@
+.slideshow-item {
+  color: white;
+}
+
+.owl-control-icon {
+  width: auto !important;
+  height: 30px !important;
+  opacity: .5;
+}
+
+.owl-control {
+  &:hover {
+    .owl-control-icon {
+      filter: grayscale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.slideshow-shadow {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.7);
+  z-index: 10;
+}
+
+.slideshow-text {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 12;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .perex {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+}
+
+.slideshow-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .owl-control-icon {
+    height: 40px;
+  }
+
+  .slideshow-text {
+    .perex {
+      font-size: 20px;
+    }
+  }
+}

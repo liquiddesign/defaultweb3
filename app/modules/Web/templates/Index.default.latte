@@ -1,0 +1,58 @@
+<html>
+{include '../../@head.latte'}
+<body>
+<header class="position-absolute w-100" style="z-index: 999;">
+    {control menu}
+</header>
+
+{control sliderControl}
+
+<div class="content-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {var $testWidget = '[widget]textboxes=n8z2[/widget]'}
+                {$testWidget|shortcode|noescape}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light content-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {var $testWidget = '[widget]textboxes=7k9z[/widget]'}
+                {$testWidget|shortcode|noescape}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRE FOOTER -->
+<div class="footer-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {$footer->text|shortcode|noescape}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <span class="pull-right small" style="margin: 10px 0px; ">&copy; Liquid Design s.r.o. | support
+					<a href="mailto:servis@lqd.cz">servis@lqd.cz</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{include '../../@scripts.latte'}
+
+</body>
+</html>

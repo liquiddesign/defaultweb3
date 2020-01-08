@@ -1,0 +1,31 @@
+.news-preview {
+  margin-bottom: 50px;
+}
+
+.news-preview-photo {
+  &:hover {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.news-preview-date {
+  color: #888;
+  font-size: .75rem;
+  margin-bottom: 6px;
+}
+
+.news-preview-name {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.news-preview-date {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.news-detail-date {
+  font-size: 14px;
+}
