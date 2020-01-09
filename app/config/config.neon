@@ -109,6 +109,4 @@ includes:
 	- ../../vendor/lqdlib/news/config.neon
 	- ../../vendor/lqdlib/blog/config.neon
 	- ../../vendor/lqdlib/users/config.neon
-	- ../../vendor/lqdlib/catalog/config.neon
-	- ../../vendor/lqdlib/poll/config.neon
 	- pages.neon
