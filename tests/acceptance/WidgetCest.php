@@ -63,4 +63,40 @@ class WidgetCest
 			$i->dontSee('Upravit');
 		}
 	}
+	
+	public function galerieWidget(AcceptanceTester $i): void
+	{
+		$i->amOnPage('/admin/web/web/galleries');
+		$i->see('Přehled galerii');
+		$i->click('Přidat galerii');
+		$i->see('Nová galerie');
+		$i->amOnPage('/admin/web/web/galleries');
+		
+		try {
+			$i->see('Upravit');
+			$i->click('Upravit');
+			$i->see('Galerie:');
+		} catch (Throwable $e) {
+			$i->dontSee('Upravit');
+		}
+		
+		try {
+			$i->see('Obrázky');
+			$i->click('Obrázky');
+			$i->see('Obrázky galerie');
+		} catch (Throwable $e) {
+			$i->dontSee('Obrázky');
+		}
+	}
+	
+	public function mapyWidget(AcceptanceTester $i): void
+	{
+	
+	}
+	
+	public function tabyWidget(AcceptanceTester $i): void
+	{
+	
+	}
+	
 }

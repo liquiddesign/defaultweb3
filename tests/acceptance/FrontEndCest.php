@@ -12,7 +12,7 @@ class FrontEndCest
 		$i->amOnPage('/');
 		$i->seeElement('.menu-logo');
 		$i->click('.menu-logo');
-		$i->seeInCurrentUrl('default/');
+		$i->seeInCurrentUrl('/');
 	}
 	
 	public function contactForm(AcceptanceTester $i): void
