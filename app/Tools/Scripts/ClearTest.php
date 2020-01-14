@@ -10,6 +10,7 @@ use Lqd\Security\Authenticator;
 use Lqd\Security\DB\Account;
 use Lqd\Security\DB\Permission;
 use Lqd\Users\DB\User;
+use Lqd\Web\DB\Article;
 use Lqd\Web\DB\MenuItem;
 use Nette\DI\Config\Loader;
 use Storm\Connection;
@@ -50,25 +51,23 @@ class ClearTest extends Script
 	
 	public function doClearArticles(): void
 	{
-		$article = $this->stm->getRepository(MenuItem::class)->many()->where('name', $this->data['web']['name'])->fetch();
-		$page = $this->stm->getRepository(Page::class)->one($article->fk_page);
+		$menuItem = $this->stm->getRepository(MenuItem::class)->many()->where('name', $this->data['web']['name'])->fetch();
 		
-		if ($page) {
+		if ($menuItem) {
+			$page = $this->stm->getRepository(Page::class)->one($menuItem->fk_page);
+			$article = $this->stm->getRepository(Article::class)->many()->where('name', $this->data['web']['name'])->fetch();
+			$menuItem->delete();
 			$page->delete();
-		}
-		
-		if ($article) {
 			$article->delete();
 		}
 		
-		$article = $this->stm->getRepository(MenuItem::class)->many()->where('name', $this->data['web']['secret']['name'])->fetch();
-		$page = $this->stm->getRepository(Page::class)->one($article->fk_page);
+		$menuItem = $this->stm->getRepository(MenuItem::class)->many()->where('name', $this->data['web']['secret']['name'])->fetch();
 		
-		if ($page) {
+		if ($menuItem) {
+			$page = $this->stm->getRepository(Page::class)->one($menuItem->fk_page);
+			$article = $this->stm->getRepository(Article::class)->many()->where('name', $this->data['web']['secret']['name'])->fetch();
+			$menuItem->delete();
 			$page->delete();
-		}
-		
-		if ($article) {
 			$article->delete();
 		}
 		
