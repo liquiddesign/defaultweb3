@@ -24,6 +24,23 @@ class AcceptanceTester extends \Codeception\Actor
     * Define custom actions here
     */
 	
+	/**
+	 * @var \Nette\DI\Config\Loader
+	 */
+   private $loader;
+	
+	/**
+	 * @var string []
+	 */
+   private $data;
+   
+   public function __construct(\Codeception\Scenario $scenario)
+   {
+   		parent::__construct($scenario);
+   		$this->loader = new \Nette\DI\Config\Loader();
+   		$this->data = $this->loader->load(__DIR__. '/../acceptance/data.neon');
+   }
+	
 	public function login($name, $password)
 	{
 		$i = $this;
@@ -32,6 +49,17 @@ class AcceptanceTester extends \Codeception\Actor
 			'login' => $name,
 			'password' => $password,
 		]);
-		$i->see($name, '.admin-menu');
+		$i->seeElement('.admin-menu');
+	}
+	
+	public function adminLogin(): void
+	{
+		$i = $this;
+		$i->amOnPage('/admin');
+		$i->submitForm('#frm-loginForm', [
+			'login' => $this->data['admin']['login'],
+			'password' => $this->data['admin']['password'],
+		]);
+		$i->seeElement('.admin-menu');
 	}
 }

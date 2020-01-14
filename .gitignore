@@ -17,6 +17,7 @@ public/css/*.css
 public/admin/css/*.css
 *.map
 composer.lock
+tests/acceptance.suite.yml
 
 # except
 !userfiles/.gitkeep

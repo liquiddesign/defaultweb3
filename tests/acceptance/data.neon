@@ -1,0 +1,33 @@
+blog:
+	name: 'Codeception post'
+	text: 'Codeception post text'
+	url: 'codeception-post'
+
+news:
+	name: 'Codeception news'
+	text: 'Codeception news text'
+	url: 'codeception-news'
+
+web:
+	name: 'Codeception article'
+	text: 'Codeception article text'
+	url: 'codeception-article'
+	secret:
+		name: 'Codeception secret article'
+		url: 'codeception-secret-article'
+		password: 'codeception'
+
+users:
+	login: 'codeception@lqd.cz'
+	wrongLogin: 'codeceptionlqd.cz'
+	password: 'codeception'
+	wrongPassword: 'codecept'
+	firstname: 'Codeception'
+	lastname: 'Codeception'
+
+admin:
+	uuid: 'codecept'
+	fullname: 'Codecept'
+	login: 'codecept'
+	password: 'codecept'
+	fk_role: 'admin'

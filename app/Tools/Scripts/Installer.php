@@ -3,10 +3,13 @@
 namespace App\Tools\Scripts;
 
 use App\Tools\Script;
+use Codeception\Module\PhpBrowser;
 use Lqd\Userfiles\Userfiles;
 use Nette\Neon\Neon;
 use Storm\Connection;
 use Storm\Migrator;
+use Symfony\Component\Yaml\Dumper;
+use Symfony\Component\Yaml\Yaml;
 
 class Installer extends Script
 {
@@ -267,5 +270,31 @@ class Installer extends Script
 	public function doCopyGithook(): void
 	{
 		\copy($this->getBaseDir() . '/temp/installer/pre-commit', $this->getBaseDir() . '/.git/hooks/pre-commit');
+	}
+	
+	public function doCreateCodeceptConfig(): void
+	{
+		$host = $this->projectName;
+		$basicConfig = <<<EOF
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+modules:
+    enabled:
+        - PhpBrowser:
+            url: http://{$this->localConfig['storm']['default']['host']}/{$host}
+        - \Helper\Acceptance
+        - Db:
+            dsn: 'mysql:host={$this->localConfig['storm']['default']['host']};dbname={$host}'
+            user: '{$this->localConfig['storm']['default']['user']}'
+            password: '{$this->localConfig['storm']['default']['password']}'
+    step_decorators: ~
+EOF;
+		
+		\file_put_contents($this->getBaseDir() . '/tests/acceptance.suite.yml', $basicConfig);
 	}
 }

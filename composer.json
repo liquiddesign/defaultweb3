@@ -149,8 +149,14 @@
         "installer": [
             "App\\Tools\\Scripts\\Installer::fire"
         ],
+        "clear-tests": [
+            "App\\Tools\\Scripts\\ClearTest::fire"
+        ],
         "test": [
-            "php vendor/bin/codecept run --steps"
+            "composer clear-tests",
+            "App\\Tools\\Scripts\\CodeceptionData::fire",
+            "php vendor/bin/codecept run acceptance WidgetCest --steps",
+            "composer clear-tests"
         ]
     },
     "require-dev": {

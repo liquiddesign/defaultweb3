@@ -1,25 +1,58 @@
 <?php
 
 use Codeception\Util\HttpCode;
+use Lqd\Security\Authenticator;
 
 class AdminAccessibilityCest
 {
-	private $pwd = '';
+	/**
+	 * @var string
+	 */
+	private $pwd;
+	
+	/**
+	 * @var string
+	 */
+	private $usr;
+	
+	/**
+	 * @var \Nette\DI\Config\Loader
+	 */
+	private $loader;
+	
+	/**
+	 * @var string []
+	 */
+	private $loadedModules;
+	
+	/**
+	 * @var string []
+	 */
+	private $data;
+	
+	/**
+	 * @var \Storm\Connection
+	 */
+	private $stm;
 	
 	public function _before(AcceptanceTester $i): void
+	{
+		$this->loader = new \Nette\DI\Config\Loader();
+		$this->loadedModules = $this->loader->load(__DIR__.'/../../app/config/config.custom.neon');
+		$this->data = $this->loader->load(__DIR__. '/data.neon');
+		$i->adminLogin();
+	}
+	
+	public function checkAdminRights(AcceptanceTester $i)
 	{
 	
 	}
 	
 	public function checkMenu(AcceptanceTester $i): void
 	{
-		$i->login('servis', $this->pwd);
-		$load = new \Nette\DI\Config\Loader();
-		$loadedModules = $load->load(__DIR__.'/../../app/config/config.custom.neon');
-		
-		foreach ($loadedModules['modules'] as $k => $v) {
+		foreach ($this->loadedModules['modules'] as $k => $v) {
 			if (\is_file(__DIR__.'/../../vendor/lqdlib/'.$v.'/config.neon')) {
-				$config = $load->load(__DIR__.'/../../vendor/lqdlib/'.$v.'/config.neon');
+				$config = $this->loader->load(__DIR__.'/../../vendor/lqdlib/'.$v.'/config.neon');
 				
 				if (\array_key_exists('admin', $config)) {
 					foreach ($config['admin']['menu'] as $item) {
@@ -30,16 +63,11 @@ class AdminAccessibilityCest
 							$page = \strtolower('/admin' . \str_replace('//', '/', $url.$submenu['action']));
 							$i->amOnPage($page);
 							$i->seeResponseCodeIs(200);
+							$i->seeElement('h3');
 						}
 					}
 				}
 			}
 		}
-	}
-	
-	public function errorPage(AcceptanceTester $i): void
-	{
-		$i->amOnPage('/adfsdfsgfsfg');
-		$i->seeResponseCodeIs(404);
 	}
 }
