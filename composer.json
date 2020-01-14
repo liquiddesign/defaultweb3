@@ -155,7 +155,7 @@
         "test": [
             "composer clear-tests",
             "App\\Tools\\Scripts\\CodeceptionData::fire",
-            "php vendor/bin/codecept run acceptance WidgetCest --steps",
+            "php vendor/bin/codecept run acceptance --steps",
             "composer clear-tests"
         ]
     },
