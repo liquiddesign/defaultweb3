@@ -119,7 +119,9 @@
             "App\\Tools\\Scripts\\Phpinfo::fire"
         ],
         "clear-nette-cache": [
-            "App\\Tools\\Scripts\\ClearCache::fire",
+            "App\\Tools\\Scripts\\ClearCache::fire"
+        ],
+        "gulp": [
             "npm run gulp --prefix ./public"
         ],
         "sync-database": [
