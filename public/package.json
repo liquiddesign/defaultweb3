@@ -17,7 +17,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jquery-datetimepicker": "^2.5.20",
     "jscolor-picker": "^2.0.4",
     "lazysizes": "^5.1.2",
