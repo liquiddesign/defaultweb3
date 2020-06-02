@@ -74,7 +74,7 @@ function initTinyMCExconf(selector, conf_override) {
             });
         },
         plugins: [
-            "responsivefilemanager noneditable autolink link image lists charmap print preview hr anchor pagebreak",
+            "responsivefilemanager preventdelete noneditable autolink link image lists charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code ",
             "insertdatetime nonbreaking table contextmenu colorpicker",
             "template paste textcolor widgetmanager fontawesome5",
