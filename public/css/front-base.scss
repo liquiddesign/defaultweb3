@@ -406,23 +406,19 @@ footer {
 /* Extra Wide block layout +MQ */
 @media (min-width: 856px) {
   .block-extralarge {margin-left: -50px; margin-right: -50px;}
-  .block-extralarge {margin-left: -50px; margin-right: -50px;} /*opět -50px...divný, ale je to správně*/
 }
 @media (min-width: 992px) {
   .block-extralarge {margin-left: -160px; margin-right: -160px;}
-  .block-extralarge {margin-left: 2px; margin-right: 2px;} /*pouze drobná korekce*/
+
 }
 @media (min-width: 1200px) {
   .block-extralarge {margin-left: -195px; margin-right: -195px;}
-  .block-extralarge {margin-left: 0; margin-right: 0;}
 }
 @media (min-width: 1450px) {
   .block-extralarge {margin-left: -315px; margin-right: -315px;}
-  .block-extralarge {margin-left: -120px; margin-right: -120px;}
 }
 @media (min-width: 1700px) {
   .block-extralarge {margin-left: -400px; margin-right: -400px;}
-  .block-extralarge {margin-left: -205px; margin-right: -205px;}
 }
 
 @media (min-width: 768px) {
