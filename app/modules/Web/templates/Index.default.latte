@@ -10,9 +10,14 @@
 <div class="content-margin">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                {var $testWidget = '[widget]textboxes=n8z2[/widget]'}
-                {$testWidget|shortcode|noescape}
+            <div class="{$article->getLayoutClass()}">
+                {$article->text|noescape|shortcode}
+            </div>
+
+            <div n:if="$article->fk_side_panel && $article->allowSidePanel()" class="col-12 col-md-4">
+                <div n:class="$article->sticky_sidepanel ? 'side-panel sticky-top'">
+                    {$article->side_panel->text|shortcode|noescape}
+                </div>
             </div>
         </div>
     </div>
