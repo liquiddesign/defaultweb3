@@ -26,4 +26,5 @@ tests/acceptance.suite.yml
 !temp/log/.gitkeep
 !temp/sessions
 !temp/sessions/.gitkeep
+!public/css/front.css
 
