@@ -1,0 +1,29 @@
+<div class="slideshow-wrapper position-relative">
+    <div class="slideshow-carousel owl-carousel owl-theme owl-loaded position-relative">
+        {var $desktopLink = $presenter->template->userUrl.'/covers/desktop/'.$cover->photoDesktop}
+        {var $mobileLink = $presenter->template->userUrl.'/covers/mobile/'.$cover->photoMobile}
+        <div class="slideshow-item position-relative">
+            <picture>
+                <source data-srcset="{$mobileLink|noescape}?{$presenter->template->ts}" media="(max-width: 600px)">
+                <img
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                        data-src="{$desktopLink|noescape}?{$presenter->template->ts}"
+                        class="lazyload"
+                        alt="image with artdirection" style=" object-fit: cover; height: {$cover->heightDesktop}; background: {$cover->bgColor|noescape}
+                {$cover->styles|noescape}"/>
+            </picture>
+
+            <div class="slideshow-text d-flex align-items-center position-absolute">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10 offset-1 col-md-8 offset-md-2">
+                            {$cover->text|noescape}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slideshow-shadow position-absolute"></div>
+        </div>
+    </div>
+</div>

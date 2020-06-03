@@ -20,6 +20,8 @@ use Lqd\Web\Control\Tab;
 use Lqd\Web\Control\Textboxes;
 use Lqd\Web\Control\Video;
 use Lqd\Web\DB\Contact;
+use Lqd\Web\DB\Cover;
+use Lqd\Web\DB\Slider;
 use Lqd\Web\DB\Textbox;
 
 trait PresenterTrait
@@ -87,6 +89,9 @@ trait PresenterTrait
 		$this->template->footer = $this->stm->getRepository(Textbox::class)->one(['id' => 'w4vk']);
 		$this->template->productCategories = $this->stm->getRepository(Category::class)->many()->where('hidden', false)->orderBy(['priority']);
 		$this->template->showProducers = $this->showProducers = isset($this->context->parameters['showProducers']) ? $this->context->parameters['showProducers'] : false;
+		$this->template->cover = $this->stm->getRepository(Cover::class)->many()->where('showOnPage', '/'.$this->getParameter('url'))->first();
+		$this->template->hasSlider = $this->stm->getRepository(Slider::class)->many()->first();
+		
 		
 		return;
 	}

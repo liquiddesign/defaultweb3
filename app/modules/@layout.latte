@@ -4,9 +4,17 @@
 <body>
 
 <!-- HEADER -->
-<header id="menu" class="header-shadow">
-    {control menu}
-</header>
+{if $cover && !$cover->hidden}
+    <header class="position-absolute w-100 {if $cover}{$cover->cssClass}{/if}" style="z-index: 999;">
+        {control menu}
+    </header>
+    {include '@cover.latte'}
+
+{else}
+    <header id="menu" class="header-shadow">
+        {control menu}
+    </header>
+{/if}
 
 <!-- CONTENT -->
 <main>

@@ -1,11 +1,24 @@
 <html>
 {include '../../@head.latte'}
 <body>
+{if $hasSlider}
 <header class="position-absolute w-100" style="z-index: 999;">
     {control menu}
 </header>
 
 {control sliderControl}
+{else}
+    {if $cover && !$cover->hidden}
+        <header class="position-absolute w-100 {if $cover}{$cover->cssClass}{/if}" style="z-index: 999;">
+            {control menu}
+        </header>
+        {include '../../@cover.latte'}
+    {else}
+        <header id="menu" class="header-shadow">
+            {control menu}
+        </header>
+    {/if}
+{/if}
 
 <div class="content-margin">
     <div class="container">
