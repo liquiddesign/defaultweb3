@@ -10,6 +10,7 @@ use Lqd\Pages\PresenterTrait as PagesPresenterTrait;
 use Lqd\Poll\Control\Poll;
 use Lqd\Translator\PresenterTrait as TranslatorPresenterTrait;
 use Lqd\Web\Control\Breadcrumb;
+use Lqd\Web\Control\Factory\ContactControl;
 use Lqd\Web\Control\Factory\Testimonial;
 use Lqd\Web\Control\Faq;
 use Lqd\Web\Control\Gallery;
@@ -18,6 +19,7 @@ use Lqd\Web\Control\Menu;
 use Lqd\Web\Control\Tab;
 use Lqd\Web\Control\Textboxes;
 use Lqd\Web\Control\Video;
+use Lqd\Web\DB\Contact;
 use Lqd\Web\DB\Textbox;
 
 trait PresenterTrait
@@ -159,4 +161,10 @@ trait PresenterTrait
 	{
 		return $this->context->getByType(\Lqd\Poll\Control\Factory\Poll::class)->create();
 	}
+	
+	public function createComponentContact(): \Lqd\Web\Control\ContactControl
+	{
+		return $this->context->getByType(ContactControl::class)->create();
+	}
+	
 }
