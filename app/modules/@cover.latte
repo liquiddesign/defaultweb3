@@ -4,7 +4,7 @@
         {var $mobileLink = $presenter->template->userUrl.'/covers/mobile/'.$cover->photoMobile}
         <div class="slideshow-item position-relative">
             <picture>
-                <source data-srcset="{$mobileLink|noescape}?{$presenter->template->ts}" media="(max-width: 600px)">
+                <source data-srcset="{$mobileLink|noescape}?{$presenter->template->ts}" media="(max-width: 767px)">
                 <img
                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                         data-src="{$desktopLink|noescape}?{$presenter->template->ts}"
@@ -12,7 +12,6 @@
                         alt="image with artdirection" style=" object-fit: cover; height: {$cover->heightDesktop}; background: {$cover->bgColor|noescape}
                 {$cover->styles|noescape}"/>
             </picture>
-
             <div class="slideshow-text d-flex align-items-center position-absolute">
                 <div class="container">
                     <div class="row">
