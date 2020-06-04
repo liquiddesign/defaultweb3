@@ -91,7 +91,7 @@ function initTinyMCExconf(selector, conf_override) {
 
         toolbar1: "undo redo | styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | " +
             "bullist numlist | subscript superscript | forecolor backcolor | table | link unlink anchor removeformat | ",
-        toolbar2: "responsivefilemanager image | hr charmap nonbreaking fontawesome5 | copy cut paste pastetext | visualblocks visualchars template widgetmanager insertcontent deleteLayout code save",
+        toolbar2: "responsivefilemanager image | hr charmap nonbreaking fontawesome5 | copy cut paste pastetext insertcontent | visualblocks visualchars widgetmanager template deleteLayout code save",
         // file_picker_callback: filemanager,
 
         file_picker_types: 'file image',
