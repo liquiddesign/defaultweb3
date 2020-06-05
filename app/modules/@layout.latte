@@ -5,7 +5,7 @@
 
 <!-- HEADER -->
 {if $cover && !$cover->hidden}
-    <header class="position-absolute w-100 {if $cover}{$cover->cssClass}{/if}" style="z-index: 999;">
+    <header class="position-absolute w-100" style="z-index: 999;">
         {control menu}
     </header>
     {include '@cover.latte'}
