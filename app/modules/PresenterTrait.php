@@ -89,7 +89,8 @@ trait PresenterTrait
 		$this->template->footer = $this->stm->getRepository(Textbox::class)->one(['id' => 'w4vk']);
 		$this->template->productCategories = $this->stm->getRepository(Category::class)->many()->where('hidden', false)->orderBy(['priority']);
 		$this->template->showProducers = $this->showProducers = isset($this->context->parameters['showProducers']) ? $this->context->parameters['showProducers'] : false;
-		$this->template->cover = $this->stm->getRepository(Cover::class)->many()->where('showOnPage', '/'.$this->getParameter('url'))->first();
+		$this->template->cover = $this->stm->getRepository(Cover::class)->many()
+			->where('showOnPage', '/'.$this->getParameter('url'))->where('hidden', false, '<>')->orderBy(['priority' => 'ASC'])->first();
 		$this->template->hasSlider = $this->stm->getRepository(Slider::class)->many()->first();
 		
 		
