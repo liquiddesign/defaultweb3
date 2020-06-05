@@ -11360,9 +11360,6 @@ header.position-absolute .menu-panel:not(.scrolled) .menu-toggler-icon {
   color: white;
   z-index: 12;
 }
-.slideshow-text h1 {
-  font-size: 24px;
-}
 .slideshow-text .perex {
   font-size: 14px;
   line-height: 1.75;
