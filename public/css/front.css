@@ -5721,6 +5721,7 @@ div.block-extralarge {
   background-color: #2e86de;
   padding: 14px 18px;
   margin-bottom: 5px;
+  border: 0;
 }
 .lqd-tab-label[aria-expanded=true] {
   border: 1px solid #2e86de;

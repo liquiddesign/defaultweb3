@@ -10,6 +10,7 @@
   background-color: $color-lqd;
   padding: 14px 18px;
   margin-bottom: 5px;
+  border: 0;
 
   &[aria-expanded="true"] {
     //background-color: darken($color-lqd, 30);
