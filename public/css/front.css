@@ -5275,16 +5275,22 @@ footer {
 /* COLOR BLOCKS */
 .color-block {
   padding: 2em;
-  border-radius: 6px;
+  border-radius: 5px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 .color-block.blue {
-  background-color: #daf1ff;
+  background-color: rgba(51, 185, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(39, 106, 139, 0.1);
+  color: #163d50;
 }
 .color-block.yellow {
   background-color: #fff0ce;
 }
 .color-block.grey {
-  background-color: #f1f1f1;
+  background-color: rgba(117, 117, 117, 0.15);
+  box-shadow: 0 20px 40px rgba(64, 64, 64, 0.1);
+  color: black;
 }
 .color-block.dark {
   background-color: #282828;

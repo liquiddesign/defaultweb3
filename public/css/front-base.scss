@@ -267,10 +267,13 @@ footer {
 /* COLOR BLOCKS */
 .color-block {
   padding: 2em;
-  border-radius: 6px;
+  border-radius: 5px;
+  margin-top: 1.5em; margin-bottom: 1.5em;
 
   &.blue {
     background-color: $color-block-blue;
+    box-shadow: 0 20px 40px hsla(200, 56%, 35%, 0.1);
+    color: hsla(200, 56%, 20%, 1);
   }
 
   &.yellow {
@@ -279,6 +282,8 @@ footer {
 
   &.grey {
     background-color: $color-block-grey;
+    box-shadow: 0 20px 40px hsla(0, 0%, 25%, 0.1);
+    color: black;
   }
 
   &.dark {
