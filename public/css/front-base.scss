@@ -266,7 +266,7 @@ footer {
 
 /* COLOR BLOCKS */
 .color-block {
-  padding: 1em;
+  padding: 2em;
   border-radius: 6px;
 
   &.blue {
@@ -279,6 +279,20 @@ footer {
 
   &.grey {
     background-color: $color-block-grey;
+  }
+
+  &.dark {
+    background-color: $color-block-dark;
+    padding: 4em;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    border-radius: 0;
+    color: #e6e6e6;
+    color: hsl(0,0%,90%);
+
+    strong, b, h1, h2, h3, h4, h5 {
+      color: white;
+    }
   }
 }
 
@@ -501,4 +515,9 @@ div.block-extralarge {position: relative; margin: 1.5em 0;}
   top: 0;
   left:0;
   z-index:10;
+}
+
+@media (max-width: 991px) {
+  /* smaller padding and margin on mobile */
+  .color-block.dark {padding: 2em; margin-top: 1.5em; margin-bottom: 1.5em; margin-left: -15px; margin-right: -15px;}
 }
