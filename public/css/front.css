@@ -6082,9 +6082,6 @@ button {
   margin-bottom: 2rem;
 }
 
-.breadcrumb-item {
-  font-size: 1.2rem;
-}
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;
 }
@@ -11285,7 +11282,7 @@ header.position-absolute .menu-panel:not(.scrolled) .menu-toggler-icon {
     font-size: 16px;
     color: #2e86de;
     background-color: transparent;
-    padding: 0 30px;
+    padding: 0 1.2em;
     border-bottom: 0 solid transparent;
     font-weight: 600;
     white-space: nowrap;
