@@ -171,7 +171,6 @@ function initTinyMCExconf(selector, conf_override) {
             {title: 'Citace', block: 'p',  attributes : {'class' : 'cite'}},
             {title: 'Citace-medium', block: 'p',  attributes : {'class' : 'cite medium'}},
             {title: 'Citace-great', block: 'p',  attributes : {'class' : 'cite great'}},
-            {title: 'Popisek obrázku', block: 'p',  attributes : {'class' : 'img-label'}},
             {title: 'Menší písmo', inline: 'small'},
             {title: 'Highlight--green', inline : 'span', classes : 'highlight--green'},
             {title: 'Highlight--red', inline : 'span', classes : 'highlight--red'},
@@ -182,9 +181,8 @@ function initTinyMCExconf(selector, conf_override) {
         ],
         link_class_list: [
             {title: 'Žádné', value: ''},
-            {title: 'Button', value: 'button'},
-            {title: 'Button - hlavní', value: 'button button--primary'},
-            {title: 'Button - sekundární', value: 'button button--secondary'},
+            {title: 'Button - primary', value: 'button button--primary'},
+            {title: 'Button - secondary', value: 'button button--secondary'},
             {title: 'Shadow hover', value: 'shadow-hover'},
         ],
         table_class_list: [
