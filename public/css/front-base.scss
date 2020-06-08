@@ -296,6 +296,37 @@ footer {
   }
 }
 
+/* First/last direct childs remove margins */
+.text-block>h1:first-child,
+.text-block>h2:first-child,
+.text-block>h3:first-child,
+.text-block>h4:first-child,
+.text-block>h5:first-child,
+.text-block>h6:first-child,
+.text-block>ol:first-child,
+.text-block>ul:first-child,
+.text-block>p:first-child {margin-top: 0}
+
+.text-block>span:first-child+h1,
+.text-block>span:first-child+h2,
+.text-block>span:first-child+h3,
+.text-block>span:first-child+h4,
+.text-block>span:first-child+h5,
+.text-block>span:first-child+h6,
+.text-block>span:first-child+ol,
+.text-block>span:first-child+ul,
+.text-block>span:first-child+p {margin-top: 0}
+
+.text-block>h1:last-child,
+.text-block>h2:last-child,
+.text-block>h3:last-child,
+.text-block>h4:last-child,
+.text-block>h5:last-child,
+.text-block>h6:last-child,
+.text-block>ol:last-child,
+.text-block>ul:last-child,
+.text-block>p:last-child {margin-bottom: 0}
+
 /* HIGHLIGHT */
 .highlight {
   &--green {
