@@ -11139,7 +11139,7 @@ header.position-absolute .menu-toggler-icon {
   display: -ms-flexbox !important;
   display: flex !important;
   color: #2569ae;
-  background-color: #eee;
+  background-color: #fff;
   padding: 10px 10px 10px 30px;
   border-bottom: 1px solid #ddd;
 }
@@ -11297,22 +11297,23 @@ header.position-absolute .menu-panel:not(.scrolled) .menu-toggler-icon {
 
   .secondary-menu {
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 0;
     margin: 0;
-    top: 25px !important;
     white-space: nowrap;
+    margin-left: 1.2rem;
+    margin-top: 5px;
   }
   .secondary-menu .secondary-menu-link {
     font-size: 14px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   .secondary-menu .secondary-menu-link:last-child {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     border-color: transparent;
   }
 
@@ -11323,8 +11324,8 @@ header.position-absolute .menu-panel:not(.scrolled) .menu-toggler-icon {
     border-bottom: 1px solid #ddd;
   }
   .secondary-menu-link:hover, .secondary-menu-link.active {
-    color: #fff;
-    background-color: #1c4e82;
+    color: #2569ae;
+    background-color: #eee;
     padding: 12px 40px 12px 24px;
     border-bottom: 1px solid transparent;
     text-decoration: none;

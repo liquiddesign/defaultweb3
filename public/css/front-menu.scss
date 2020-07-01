@@ -81,13 +81,13 @@ $mobile-secondary-menu__padding: 0;
 $mobile-secondary-menu__margin: 0;
 // - desktop
 $desktop-secondary-menu__border: 1px solid #ccc; // or Format: 1px solid red; has to be used
-$desktop-secondary-menu__border-radius: 6px;
+$desktop-secondary-menu__border-radius: 0;
 $desktop-secondary-menu__padding: 0;
 $desktop-secondary-menu__margin: 0;
 
 /***** Secondary Menu Link (links in secondary menu) *****/
 $mobile-secondary-menu-link__color: #2569ae;
-$mobile-secondary-menu-link__bg: #eee;
+$mobile-secondary-menu-link__bg: #fff;
 $mobile-secondary-menu-link__padding: 10px 10px 10px 30px;
 $mobile-secondary-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
 $mobile-secondary-menu-link__border-color: #ddd;
@@ -105,8 +105,8 @@ $desktop-secondary-menu-link__padding: 12px 40px 12px 24px;
 $desktop-secondary-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
 $desktop-secondary-menu-link__border-color: #ddd;
 // desktop --active + hover
-$desktop-secondary-menu-link__color--active: #fff;
-$desktop-secondary-menu-link__bg--active: #1c4e82;
+$desktop-secondary-menu-link__color--active: #2569ae;
+$desktop-secondary-menu-link__bg--active: #eee;
 $desktop-secondary-menu-link__padding--active: $desktop-secondary-menu-link__padding;
 $desktop-secondary-menu-link__border--active: 1px solid; // Use only this format (size type) Don't use color
 $desktop-secondary-menu-link__border-color--active: transparent;
@@ -423,8 +423,9 @@ header {
     border-radius: $desktop-secondary-menu__border-radius;
     padding: $desktop-secondary-menu__padding;
     margin: $desktop-secondary-menu__margin;
-    top: 25px !important;
     white-space: nowrap;
+    margin-left: 1.2rem;
+    margin-top: 5px;
 
     .secondary-menu-link {
       font-size: $desktop-secondary-menu-link_font-size;
@@ -434,8 +435,8 @@ header {
       &:last-child {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        border-bottom-left-radius: $desktop-secondary-menu__border-radius;
-        border-bottom-right-radius: $desktop-secondary-menu__border-radius;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         border-color: transparent;
       }
     }
