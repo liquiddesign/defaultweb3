@@ -80,7 +80,8 @@ $mobile-secondary-menu__border-radius: 0;
 $mobile-secondary-menu__padding: 0;
 $mobile-secondary-menu__margin: 0;
 // - desktop
-$desktop-secondary-menu__border: 1px solid #ccc; // or Format: 1px solid red; has to be used
+$desktop-secondary-menu__border: 0; // or Format: 1px solid red; has to be used
+$desktop-secondary-menu__shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 $desktop-secondary-menu__border-radius: 0;
 $desktop-secondary-menu__padding: 0;
 $desktop-secondary-menu__margin: 0;
@@ -101,7 +102,7 @@ $mobile-secondary-menu-link__border-color--active: #2569ae;
 $desktop-secondary-menu-link_font-size: 14px;
 $desktop-secondary-menu-link__color: #2569ae;
 $desktop-secondary-menu-link__bg: #fff;
-$desktop-secondary-menu-link__padding: 12px 40px 12px 24px;
+$desktop-secondary-menu-link__padding: 0.6rem 1rem;
 $desktop-secondary-menu-link__border: 1px solid; // Use only this format (size type) Don't use color
 $desktop-secondary-menu-link__border-color: #ddd;
 // desktop --active + hover
@@ -383,6 +384,9 @@ header {
 }
 
 @media (min-width: 992px) {
+  .dropdown-menu {
+    min-width: 12rem;
+  }
   .navigation {
     padding: $desktop-navigation__padding;
   }
@@ -425,7 +429,8 @@ header {
     margin: $desktop-secondary-menu__margin;
     white-space: nowrap;
     margin-left: 1.2rem;
-    margin-top: 5px;
+    margin-top: 10px;
+    box-shadow: $desktop-secondary-menu__shadow;
 
     .secondary-menu-link {
       font-size: $desktop-secondary-menu-link_font-size;
@@ -452,7 +457,7 @@ header {
     &.active {
       color: $desktop-secondary-menu-link__color--active;
       background-color: $desktop-secondary-menu-link__bg--active;
-      padding: $desktop-secondary-menu-link__padding--active;
+      padding: $desktop-secondary-menu-link__padding;
       border-bottom: $desktop-secondary-menu-link__border--active $desktop-secondary-menu-link__border-color--active;
       text-decoration: none;
     }
