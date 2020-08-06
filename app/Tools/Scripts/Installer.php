@@ -3,13 +3,10 @@
 namespace App\Tools\Scripts;
 
 use App\Tools\Script;
-use Codeception\Module\PhpBrowser;
 use Lqd\Userfiles\Userfiles;
 use Nette\Neon\Neon;
 use Storm\Connection;
 use Storm\Migrator;
-use Symfony\Component\Yaml\Dumper;
-use Symfony\Component\Yaml\Yaml;
 
 class Installer extends Script
 {
@@ -17,11 +14,6 @@ class Installer extends Script
 	 * @var \Storm\Connection
 	 */
 	private $stm;
-	
-	/**
-	 * @var \Storm\Migrator
-	 */
-	private $migrator;
 	
 	/**
 	 * @var \Lqd\Userfiles\Userfiles
@@ -34,12 +26,12 @@ class Installer extends Script
 	private $projectName = '';
 	
 	/**
-	 * @var string[]
+	 * @var mixed[]|mixed[][]
 	 */
 	private $config = [];
 	
 	/**
-	 * @var string[]
+	 * @var mixed[]|mixed[][]
 	 */
 	private $localConfig = [];
 	
@@ -57,7 +49,6 @@ class Installer extends Script
 	
 	/**
 	 * Login to database
-	 *
 	 * @throws \Nette\Application\ApplicationException
 	 * return void
 	 */
@@ -89,7 +80,8 @@ class Installer extends Script
 			} catch (\PDOException $x) {
 				$pdoException = true;
 				$this->writeError('Nepodařilo se připojit k databázi.');
-				if ($x->getCode() == 1045) {
+				
+				if ($x->getCode() === 1045) {
 					$this->getIO()->ask('Zadali jste špatné přihlašovací údaje. Pro nové zadání stiskněte Enter.');
 				} else {
 					$this->getIO()->ask('Zkontrolujte zda máte spuštěný server (např. WAMP). Po spuštění stiskněte Enter');
@@ -111,7 +103,6 @@ class Installer extends Script
 	
 	/**
 	 * Create config
-	 *
 	 * @throws \Nette\Application\ApplicationException
 	 * return void
 	 */
@@ -163,14 +154,12 @@ class Installer extends Script
 		$this->config['modules'][] = 'news';
 		$this->config['modules'][] = 'blog';
 		$this->config['modules'][] = 'users';
-
+		
 		\file_put_contents($this->getBaseDir() . '/' . self::CONFIGDIR . '/' . $config, Neon::encode($this->config, Neon::BLOCK), Neon::BLOCK);
 	}
 	
 	/**
 	 * Create config
-	 *
-	 * @throws \Nette\Application\ApplicationException
 	 * return void
 	 */
 	public function doCrateLocalConfig(): void
@@ -188,7 +177,7 @@ class Installer extends Script
 	
 	/**
 	 * Create database
-	 *
+	 * @throws \Storm\Exception\InvalidInput
 	 * @throws \Nette\Application\ApplicationException
 	 * return void
 	 */
@@ -210,7 +199,7 @@ class Installer extends Script
 		}
 		
 		$this->getContainer()->addService('storm.default', $this->stm);
-		$this->migrator = $this->getContainer()->getByType(Migrator::class);
+		$migrator = $this->getContainer()->getByType(Migrator::class);
 		
 		if (isset($this->config['includes'])) {
 			foreach ($this->config['includes'] as $include) {
@@ -221,7 +210,7 @@ class Installer extends Script
 				}
 				
 				foreach ($aux['storm']['default']['migrator']['structure'] as $model) {
-					$this->migrator->addModel($model);
+					$migrator->addModel($model);
 				}
 			}
 		}
@@ -235,14 +224,16 @@ class Installer extends Script
 			$answer = $this->getIO()->select('Zvolte způsob vytvoření databáze: (0)', [
 				0 => 'Automaticky vytvořit strukturu databáze a importovat základní data',
 				1 => 'Nevytvářet strukturu databáze (vytvořím si sám)',
-			], 0);
+			], '0');
 			
 			if ($answer === '0') {
 				$this->write('Vytvářím strukturu databáze');
 				/* create DB structure */
-				$this->stm->query($this->migrator->getSyncString($this->getContainer()->parameters['composer']->getPrefixesPsr4()));
+				$this->stm->query($migrator->getSyncString($this->getContainer()->parameters['composer']->getPrefixesPsr4()));
 				$this->write('Importuji základní data');
-				$this->getScript(SyncData::class, [])->doSyncData();
+				/** @var \App\Tools\Scripts\SyncData $script */
+				$script = $this->getScript(SyncData::class, []);
+				$script->doSyncData();
 				$this->write('Struktura vytvořena a základní data importována');
 			} else {
 				$this->getIO()->ask('Proveďte import databáze (potom stiskněte Enter)');
@@ -251,13 +242,15 @@ class Installer extends Script
 			$answer = $this->getIO()->select('Zvolte způsob nahrání databáze: (0)', [
 				0 => 'Importovat databázi ručně',
 				1 => 'Importovat automaticky ze souboru nebo URL',
-			], 0);
+			], '0');
 			
 			if ($answer === '0') {
 				$this->getIO()->ask("Vytvořte databázi $dbName Proveďte import databáze (potom stiskněte Enter)");
 			} else {
 				$argument = $this->getIO()->ask('Zajdete soubor k importu nebo doménu pro SQL dump (prázdné=vypíše seznam)');
-				$this->getScript(ImportDatabase::class, [$argument])->doImportDatabase();
+				/** @var \App\Tools\Scripts\ImportDatabase $script */
+				$script = $this->getScript(ImportDatabase::class, [$argument]);
+				$script->doImportDatabase();
 			}
 		}
 	}

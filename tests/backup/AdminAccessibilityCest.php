@@ -38,8 +38,9 @@ class AdminAccessibilityCest
 	public function _before(AcceptanceTester $i): void
 	{
 		$this->loader = new \Nette\DI\Config\Loader();
-		$this->loadedModules = $this->loader->load(__DIR__.'/../../app/config/config.custom.neon');
-		$this->data = $this->loader->load(__DIR__. '/data.neon');
+		$this->loadedModules = $this->loader->load(__DIR__ . '/../../app/config/config.custom.neon');
+		// popremyslet
+		$this->data = $this->loader->load(__DIR__ . '/data.neon');
 		$i->adminLogin();
 	}
 	
@@ -51,8 +52,8 @@ class AdminAccessibilityCest
 	public function checkMenu(AcceptanceTester $i): void
 	{
 		foreach ($this->loadedModules['modules'] as $k => $v) {
-			if (\is_file(__DIR__.'/../../vendor/lqdlib/'.$v.'/config.neon')) {
-				$config = $this->loader->load(__DIR__.'/../../vendor/lqdlib/'.$v.'/config.neon');
+			if (\is_file(__DIR__ . '/../../vendor/lqdlib/' . $v . '/config.neon')) {
+				$config = $this->loader->load(__DIR__ . '/../../vendor/lqdlib/' . $v . '/config.neon');
 				
 				if (\array_key_exists('admin', $config)) {
 					foreach ($config['admin']['menu'] as $item) {
@@ -60,7 +61,7 @@ class AdminAccessibilityCest
 						$url = \preg_replace('/Admin/', '', $plink, 1);
 						
 						foreach ($item['items'] as $submenu) {
-							$page = \strtolower('/admin' . \str_replace('//', '/', $url.$submenu['action']));
+							$page = \strtolower('/admin' . \str_replace('//', '/', $url . $submenu['action']));
 							$i->amOnPage($page);
 							$i->seeResponseCodeIs(200);
 							$i->seeElement('h3');

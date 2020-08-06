@@ -24,6 +24,10 @@
     <div class="container">
         <div class="row">
             <div class="{$article->getLayoutClass()}">
+                TEXT |{plink this}|<br>
+                TEXT |{plink default}|<br>
+                TEXT |{plink default lang=>cz}|<br>
+                TEXT |{plink default lang=>en}|<br>
                 {$article->text|noescape|shortcode}
             </div>
 

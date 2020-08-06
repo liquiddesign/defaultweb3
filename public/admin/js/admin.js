@@ -1,5 +1,5 @@
 function filemanager(field_name, url, type, win) {
-
+    console.log('aaaaaaaaaaaa');
     let e = tinymce.activeEditor;
     let t = field_name;
     let a = type;
@@ -15,7 +15,7 @@ function filemanager(field_name, url, type, win) {
 
     var o = "RESPONSIVE FileManager";
     "undefined" != typeof e.settings.filemanager_title && e.settings.filemanager_title && (o = e.settings.filemanager_title);
-    var l = "key";
+    var l = "keyaaaaaa";
     "undefined" != typeof e.settings.filemanager_access_key && e.settings.filemanager_access_key && (l = e.settings.filemanager_access_key);
     var f = "";
     "undefined" != typeof e.settings.filemanager_sort_by && e.settings.filemanager_sort_by && (f = "&sort_by=" + e.settings.filemanager_sort_by);
@@ -27,7 +27,7 @@ function filemanager(field_name, url, type, win) {
     "undefined" != typeof e.settings.filemanager_crossdomain && e.settings.filemanager_crossdomain && (v = "&crossdomain=1", window.addEventListener ? window.addEventListener("message", n, !1) : window.attachEvent("onmessage", n)),
         tinymce.activeEditor.windowManager.open({
             title: o,
-            file: e.settings.external_filemanager_path + "dialog.php?type=" + urltype + "&descending=" + m + f + c + v + "&lang=" + e.settings.language + "&akey=" + l,
+            file: e.settings.external_filemanager_path + "dialog.php?type=" + urltype + "&descending=" + m + f + c + v + "&lang=" + e.settings.language + "&akey=aaa" + l,
             width: r,
             height: g,
             resizable: !0,
@@ -104,6 +104,7 @@ function initTinyMCExconf(selector, conf_override) {
                 var width_reduce = (width - 20) % 138;
                 width = width - width_reduce + 10;
             }
+            console.log('aaaaa');
             var urltype = 2;
             if (meta.filetype == 'image') {
                 urltype = 1;
@@ -119,6 +120,7 @@ function initTinyMCExconf(selector, conf_override) {
             if (typeof this.settings.filemanager_access_key !== "undefined" && this.settings.filemanager_access_key) {
                 akey = this.settings.filemanager_access_key;
             }
+
             var sort_by = "";
             if (typeof this.settings.filemanager_sort_by !== "undefined" && this.settings.filemanager_sort_by) {
                 sort_by = "&sort_by=" + this.settings.filemanager_sort_by;
@@ -142,7 +144,7 @@ function initTinyMCExconf(selector, conf_override) {
             // }
             tinymce.activeEditor.windowManager.open({
                 title: title,
-                file: this.settings.external_filemanager_path + 'dialog.php?type=' + urltype + '&descending=' + descending + sort_by + fldr + crossdomain + '&lang=' + this.settings.language + '&akey=' + akey,
+                file: this.settings.external_filemanager_path + 'dialog.php?type=' + urltype + '&descending=' + descending + sort_by + fldr + crossdomain + '&lang=' + this.settings.language + '&akey=aaaa' + akey,
                 width: width,
                 height: height,
                 resizable: true,

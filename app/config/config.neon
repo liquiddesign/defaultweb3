@@ -20,7 +20,7 @@ parameters:
 		#en: ['en_US.UTF-8','en']
 		#ru: ['ru_RU.UTF-8','rus']
 	currency: CZK
-	currency_locale: cs_CZ
+	currencyLocale: cs_CZ
 	noindex:
 		master: masterinter.net
 		vashosting: vas-server.cz
@@ -59,8 +59,7 @@ application:
 		*: ['App', *,  *Presenter]
 
 routing:
-	routes:
-		'scripts[/<namespace>][/<script>]': 'Tools:Run:default'
+		#'scripts[/<namespace>][/<script>]': 'Tools:Run:default'
 
 forms:
 	messages: 	
@@ -71,13 +70,16 @@ forms:
 
 extensions:
 	storm: \Storm\Nette\Extension
+	storm2: \StORM\Bridges\StormDI
 	modules: \Lqd\Modules\Extension
+	pages: \Pages\Bridges\PagesDI
 
-services:   
+services:
 	latte.latteFactory:
 		setup:
 			- Lqd\Common\Filters::register(@self,@container,[currencyDigits=0])
-
+	#routing.router: Nette\Application\Routers\SimpleRouter
+	#pages.source: Pages\DB\PageRepository
 storm:
 	default:
 		host: localhost
@@ -99,14 +101,14 @@ storm:
 #				- /app/modules/Custom/data/test.json
 
 includes:
-	- ../../vendor/lqdlib/userfiles/config.neon
-	- ../../vendor/lqdlib/admin/config.neon
-	- ../../vendor/lqdlib/email/config.neon
-	- ../../vendor/lqdlib/translator/config.neon
-	- ../../vendor/lqdlib/security/config-database.neon
-	- ../../vendor/lqdlib/pages/config.neon
-	- ../../vendor/lqdlib/web/config.neon
-	- ../../vendor/lqdlib/news/config.neon
-	- ../../vendor/lqdlib/blog/config.neon
-	- ../../vendor/lqdlib/users/config.neon
+	- ../../vendor/lqdvendor/userfiles/config.neon
+	- ../../vendor/lqdvendor/admin/config.neon
+	- ../../vendor/lqdvendor/email/config.neon
+	- ../../vendor/lqdvendor/translator/config.neon
+	- ../../vendor/lqdvendor/security/config-database.neon
+	- ../../vendor/lqdvendor/web/config.neon
+	- ../../vendor/lqdvendor/news/config.neon
+	- ../../vendor/lqdvendor/blog/config.neon
+	- ../../vendor/lqdvendor/catalog/config.neon
+	- ../../vendor/lqdvendor/users/config.neon
 	- pages.neon

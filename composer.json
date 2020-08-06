@@ -5,24 +5,25 @@
     "require": {
         "php": ">=7.1.0",
         "ext-pdo": "*",
-        "nette/nette": "~2.4.0",
-        "lqdlib/security": "dev-new-admin",
-        "lqdlib/pages": "@dev",
-        "lqdlib/cms": "dev-new-admin",
+        "nette/nette": "~3.0",
+        "liquiddesign/storm": "~1.0",
+        "lqdvendor/security": "@dev",
+        "lqdvendor/pages": "@dev",
+        "lqdvendor/pages-2gen": "@dev",
+        "lqdvendor/cms": "@dev",
         "lqdlib/storm": "@dev",
-        "lqdlib/admin": "dev-new-admin",
-        "lqdlib/translator": "@dev",
-        "lqdlib/modules": "@dev",
-        "lqdlib/email": "dev-new-admin",
-        "lqdlib/web": "dev-new-admin",
-        "lqdlib/eshop": "@dev",
-        "lqdlib/common": "@dev",
-        "lqdlib/userfiles": "@dev",
-        "lqdlib/catalog": "dev-new-admin",
-        "lqdlib/news": "dev-new-admin",
-        "lqdlib/blog": "dev-new-admin",
-        "lqdlib/users": "dev-new-admin",
-        "lqdlib/poll": "dev-new-admin"
+        "lqdvendor/admin": "@dev",
+        "lqdvendor/translator": "@dev",
+        "lqdvendor/modules": "@dev",
+        "lqdvendor/email": "@dev",
+        "lqdvendor/web": "@dev",
+        "lqdvendor/common": "@dev",
+        "lqdvendor/userfiles": "@dev",
+        "lqdvendor/catalog": "@dev",
+        "lqdvendor/news": "@dev",
+        "lqdvendor/blog": "@dev",
+        "lqdvendor/users": "@dev",
+        "lqdvendor/poll": "@dev"
     },
     "autoload": {
         "psr-4": {
@@ -33,15 +34,19 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/security.git"
+            "url": "git@gitlab.com:lqdvendor/security.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/pages.git"
+            "url": "git@gitlab.com:lqdvendor/pages-2gen.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/cms.git"
+            "url": "git@gitlab.com:lqdvendor/pages.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@gitlab.com:lqdvendor/cms.git"
         },
         {
             "type": "vcs",
@@ -49,55 +54,51 @@
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/admin.git"
+            "url": "git@gitlab.com:lqdvendor/admin.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/translator.git"
+            "url": "git@gitlab.com:lqdvendor/translator.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/modules.git"
+            "url": "git@gitlab.com:lqdvendor/modules.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/email.git"
+            "url": "git@gitlab.com:lqdvendor/email.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/web.git"
+            "url": "git@gitlab.com:lqdvendor/web.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/eshop.git"
+            "url": "git@gitlab.com:lqdvendor/common.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/common.git"
+            "url": "git@gitlab.com:lqdvendor/userfiles.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/userfiles.git"
+            "url": "git@gitlab.com:lqdvendor/catalog.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/catalog.git"
+            "url": "git@gitlab.com:lqdvendor/news.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/news.git"
+            "url": "git@gitlab.com:lqdvendor/blog.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/blog.git"
+            "url": "git@gitlab.com:lqdvendor/users.git"
         },
         {
             "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/users.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@gitlab.com:lqdlib/poll.git"
+            "url": "git@gitlab.com:lqdvendor/poll.git"
         }
     ],
     "scripts": {
@@ -157,14 +158,16 @@
         "test": [
             "composer clear-tests",
             "App\\Tools\\Scripts\\CodeceptionData::fire",
-            "php vendor/bin/codecept run acceptance --steps",
+            "codecept run acceptance --steps",
             "composer clear-tests"
-        ]
+        ],
+        "phpstan": "phpstan analyse --memory-limit 1G -c phpstan.neon",
+        "phpcs": "phpcs --standard=ruleset.xml app"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
-        "slevomat/coding-standard": "~4.0",
         "composer/composer": "*",
-        "codeception/codeception": "^3.1"
+        "codeception/codeception": "^3.1",
+        "liquiddesign/codestyle": "1.0.1",
+        "phpstan/phpstan": "*"
     }
 }

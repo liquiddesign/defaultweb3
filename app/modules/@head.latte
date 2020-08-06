@@ -1,25 +1,25 @@
 <head>
     {* Google Analytics tool *}
-    <script n:if="$settings->google_analytics" async src="https://www.googletagmanager.com/gtag/js?id={$settings->google_analytics}"></script>
-    <script n:if="$settings->google_analytics">
+    <script n:if="$settings->googleAnalytics" async src="https://www.googletagmanager.com/gtag/js?id={$settings->googleAnalytics}"></script>
+    <script n:if="$settings->googleAnalytics">
         window.dataLayer = window.dataLayer || [];
         function gtag(){
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
 
-        gtag('config', '{$settings->google_analytics|noescape}');
+        gtag('config', '{$settings->googleAnalytics|noescape}');
     </script>
     {* Google Tag Manager *}
-    <script n:if="$settings->google_tag_manager">(function(w,d,s,l,i){ w[l]=w[l]||[];w[l].push({ 'gtm.start':
+    <script n:if="$settings->googleTagManager">(function(w,d,s,l,i){ w[l]=w[l]||[];w[l].push({ 'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','{$settings->google_tag_manager|noescape}');
+        })(window,document,'script','dataLayer','{$settings->googleTagManager|noescape}');
     </script>
     {* Google Tag Manager (noscript) *}
-    <noscript n:if="$settings->google_tag_manager">
-        <iframe src="https://www.googletagmanager.com/ns.html?id={$settings->google_tag_manager}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <noscript n:if="$settings->googleTagManager">
+        <iframe src="https://www.googletagmanager.com/ns.html?id={$settings->googleTagManager}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     {* End Google Tag Manager *}
 
@@ -27,21 +27,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="cs" />
-    <link rel="canonical" href="{$page->getCanonicUrl()}">
-    <meta name="description" content="{$page->getDescription()}" />
+    <link rel="canonical" href="{*$page->getCanonicUrl()*}">
+    <meta name="description" content="{*$page->getDescription()*}" />
     <meta name="created" content="Liquid Design s.r.o." />
-    {if $noindex === true}
+    {*if $noindex === true}
     <meta n:if="$noindex === true" name="robots" content="noindex,nofollow">
     {else}
     <meta n:if="$page->getRobots()" name="robots" content={$page->getRobots()}>
-    {/if}
-    {$page->getMeta()|noescape}
+    {/if*}
+    {*$page->getMeta()|noescape*}
 
-    <title>{$page->getTitle()} {if $page->getId() !== 'custom_index' && $page->getId() !== 'home'}{$settings->project_title}{/if}</title>
+    <title>{*$page->getTitle()*} {*if $page->getId() !== 'custom_index' && $page->getId() !== 'home'*}{*$settings->project_title}{/if*}</title>
 
     <link rel="shortcut icon" href="{$pubUrl}/favicon.ico" />
 
     {include '@css.latte'}
 
-    {$settings->scripts_header|noescape}
+    {$settings->scriptsHeader|noescape}
 </head>

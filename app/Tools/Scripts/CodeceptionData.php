@@ -15,7 +15,7 @@ class CodeceptionData extends Script
 	private $stm;
 	
 	/**
-	 * @var string []
+	 * @var string[][]|string[][][]
 	 */
 	private $data;
 	
@@ -27,9 +27,10 @@ class CodeceptionData extends Script
 	public function __construct(Connection $stm)
 	{
 		$this->loader = new Loader();
-		$this->data = $this->loader->load(__DIR__ .'/../../../tests/acceptance/data.neon');
+		$this->data = $this->loader->load(__DIR__ . '/../../../tests/acceptance/data.neon');
 		$this->stm = $stm;
 	}
+	
 	public function doAddSupervisor(): void
 	{
 		$account = $this->stm->getRepository(\Lqd\Security\DB\Account::class)->create();
@@ -37,7 +38,7 @@ class CodeceptionData extends Script
 		$account->login = $this->data['admin']['login'];
 		$account->password = Authenticator::setCredentialTreatment($this->data['admin']['password']);
 		$account->active = 1;
-		$account->fk_role = $this->data['admin']['fk_role'];
+		$account->setValue('fk_role', $this->data['admin']['fk_role']);
 		$this->stm->getRepository(\Lqd\Security\DB\Account::class)->add($account);
 		$supervisor = $this->stm->getRepository(\Lqd\Admin\DB\User::class)->create(['fk_account' => $account->getPK()]);
 		$supervisor->fullname = $this->data['admin']['fullname'];
@@ -48,5 +49,4 @@ class CodeceptionData extends Script
 		$this->stm->getRepository(\Lqd\Security\DB\Permission::class)->add($permission);
 		$this->write('Super user created');
 	}
-	
 }

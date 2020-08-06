@@ -3,13 +3,12 @@
 namespace App;
 
 use Lqd\Catalog\DB\Category;
-use Lqd\Web\Control\Carousel;
 use Lqd\Email\Control\ContactForm;
 use Lqd\Modules\PresenterTrait as ModulePresenterTrait;
-use Lqd\Pages\PresenterTrait as PagesPresenterTrait;
 use Lqd\Poll\Control\Poll;
 use Lqd\Translator\PresenterTrait as TranslatorPresenterTrait;
 use Lqd\Web\Control\Breadcrumb;
+use Lqd\Web\Control\Carousel;
 use Lqd\Web\Control\Factory\ContactControl;
 use Lqd\Web\Control\Factory\Testimonial;
 use Lqd\Web\Control\Faq;
@@ -19,7 +18,6 @@ use Lqd\Web\Control\Menu;
 use Lqd\Web\Control\Tab;
 use Lqd\Web\Control\Textboxes;
 use Lqd\Web\Control\Video;
-use Lqd\Web\DB\Contact;
 use Lqd\Web\DB\Cover;
 use Lqd\Web\DB\Slider;
 use Lqd\Web\DB\Textbox;
@@ -31,9 +29,18 @@ trait PresenterTrait
 		TranslatorPresenterTrait::startup as protected translatorStartup;
 		TranslatorPresenterTrait::beforeRender as protected translatorBeforeRender;
 	}
-	use PagesPresenterTrait {
-		PagesPresenterTrait::beforeRender as protected pagesBeforeRender;
-	}
+	
+	/**
+	 * @persistent
+	 * @var string|null
+	 */
+	public $lang;
+	
+	/**
+	 * @inject
+	 * @var \Pages\Pages
+	 */
+	public $pages;
 	
 	/**
 	 * Storm
@@ -54,17 +61,23 @@ trait PresenterTrait
 	
 	public function startup(): void
 	{
+		/** @noinspection PhpUndefinedClassInspection */
 		parent::startup();
 		
 		\Lqd\Common\Filters::$currency = $this->context->parameters['currency'];
-		\Lqd\Common\Filters::$currency_locale = $this->context->parameters['currency_locale'];
+		\Lqd\Common\Filters::$currencyLocale = $this->context->parameters['currencyLocale']; // @codingStandardsIgnoreLine
 		
 		$this->translatorStartup();
 	}
 	
+	/**
+	 * @throws \Storm\Exception\NotFound
+	 */
 	public function beforeRender(): void
 	{
-		$this->pagesBeforeRender();
+		
+		$this->template->page = $this->pages->getPage();
+	
 		$this->translatorBeforeRender();
 		
 		$httpRequest = $this->getHttpRequest();
@@ -86,13 +99,13 @@ trait PresenterTrait
 		$this->template->ts = $this->context->parameters['ts'];
 		$this->template->settings = $this->stm->getRepository(\Lqd\Web\DB\Settings::class)->many()->first();
 		$this->template->langs = $this->translator->getAvailableLanguages();
+		$this->template->lang = $this->lang;
 		$this->template->footer = $this->stm->getRepository(Textbox::class)->one(['id' => 'w4vk']);
 		$this->template->productCategories = $this->stm->getRepository(Category::class)->many()->where('hidden', false)->orderBy(['priority']);
-		$this->template->showProducers = $this->showProducers = isset($this->context->parameters['showProducers']) ? $this->context->parameters['showProducers'] : false;
+		$this->template->showProducers = isset($this->context->parameters['showProducers']) ?: false;
 		$this->template->cover = $this->stm->getRepository(Cover::class)->many()
-			->where('showOnPage', '/'.$this->getParameter('url'))->where('hidden', false)->orderBy(['priority' => 'ASC'])->first();
+			->where('showOnPage', '/' . $this->getParameter('url'))->where('hidden', false)->orderBy(['priority' => 'ASC'])->first();
 		$this->template->hasSlider = $this->stm->getRepository(Slider::class)->many()->first();
-		
 		
 		return;
 	}
@@ -172,5 +185,4 @@ trait PresenterTrait
 	{
 		return $this->context->getByType(ContactControl::class)->create();
 	}
-	
 }

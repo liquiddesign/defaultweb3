@@ -7,18 +7,18 @@ use Storm\Migrator;
 
 class DumpDatabase extends Script
 {
-    /**
-     * @var \Storm\Migrator
-     */
-    private $migrator;
-
-    public function __construct(Migrator $migrator)
-    {
-        $this->migrator = $migrator;
-    }
-
-    public function doDumpDatabase(): void
-    {
-        $this->migrator->sqlDump();
-    }
+	/**
+	 * @var \Storm\Migrator
+	 */
+	private $migrator;
+	
+	public function __construct(Migrator $migrator)
+	{
+		$this->migrator = $migrator;
+	}
+	
+	public function doDumpDatabase(): void
+	{
+		$this->migrator->sqlDump();
+	}
 }

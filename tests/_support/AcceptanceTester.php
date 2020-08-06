@@ -37,29 +37,31 @@ class AcceptanceTester extends \Codeception\Actor
    public function __construct(\Codeception\Scenario $scenario)
    {
    		parent::__construct($scenario);
+   		
    		$this->loader = new \Nette\DI\Config\Loader();
    		$this->data = $this->loader->load(__DIR__. '/../acceptance/data.neon');
    }
 	
+	
 	public function login($name, $password)
 	{
-		$i = $this;
+		/*$i = $this;
 		$i->amOnPage('/admin');
 		$i->submitForm('#frm-loginForm', [
 			'login' => $name,
 			'password' => $password,
 		]);
-		$i->seeElement('.admin-menu');
+		$i->seeElement('.admin-menu');*/
 	}
 	
 	public function adminLogin(): void
 	{
-		$i = $this;
+	/*	$i = $this;
 		$i->amOnPage('/admin');
 		$i->submitForm('#frm-loginForm', [
 			'login' => $this->data['admin']['login'],
 			'password' => $this->data['admin']['password'],
 		]);
-		$i->seeElement('.admin-menu');
+		$i->seeElement('.admin-menu');*/
 	}
 }

@@ -1,9 +1,17 @@
 # Custom Index sa vytvara cez DB
 pages:
-	pages:
-		catalog:
-			url: 'katalog'
-			plink: 'Custom:Index:catalog'
-		catalog_detail:
-			url: 'katalog-detail'
-			plink: 'Custom:Index:catalogDetail'
+	defaultMutation: cz
+	mutations: [cz, en]
+	mapping:
+		methods:
+			'*': [one, [?, true]]
+			'news': [one, [?, true]]
+		throw404: false
+	types:
+		index:
+			name: 'Index'
+			plink: 'Web:Index:default'
+		typo:
+			name: 'Typografie'
+			plink: 'Web:Index:typo'
+			defaultMask: 'typografie'
