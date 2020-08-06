@@ -11,6 +11,7 @@ pages:
 		index:
 			name: 'Index'
 			plink: 'Web:Index:default'
+			defaultMask: ''
 		typo:
 			name: 'Typografie'
 			plink: 'Web:Index:typo'

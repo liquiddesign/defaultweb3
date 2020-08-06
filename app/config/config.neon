@@ -95,7 +95,9 @@ storm:
 			generator: Storm\Generator\Uuid
 		migrator:
 			structure:
-				- Pages\DB\*
+				- Pages\DB\Page
+				- Pages\DB\Redirect
+				- Pages\DB\Sitemap
 			data:
 #				- /app/modules/Custom/data/test.sql
 #				- /app/modules/Custom/data/test.json
