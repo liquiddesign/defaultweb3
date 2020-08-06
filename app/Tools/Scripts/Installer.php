@@ -138,17 +138,17 @@ class Installer extends Script
 		
 		
 		/*if ($this->getIO()->askConfirmation("Povolit modul 'eshop'? (n)", false)) {
-			$this->config['includes'][] = '../../vendor/lqdlib/eshop/config.neon';
+			$this->config['includes'][] = '../../vendor/lqdvendor/eshop/config.neon';
 			$this->config['modules'][] = 'eshop';
 		}*/
 		
 		//if ($this->getIO()->askConfirmation("Povolit modul 'catalog'? (n)", false)) {
-			$this->config['includes'][] = '../../vendor/lqdlib/catalog/config.neon';
-			$this->config['modules'][] = 'catalog';
+		$this->config['includes'][] = '../../vendor/lqdvendor/catalog/config.neon';
+		$this->config['modules'][] = 'catalog';
 		//}
 		
 		if ($this->getIO()->askConfirmation("Povolit modul 'ankety'? (n)", false)) {
-			$this->config['includes'][] = '../../vendor/lqdlib/poll/config.neon';
+			$this->config['includes'][] = '../../vendor/lqdvendor/poll/config.neon';
 			$this->config['modules'][] = 'poll';
 		}
 		
