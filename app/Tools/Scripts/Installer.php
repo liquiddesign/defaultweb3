@@ -136,15 +136,16 @@ class Installer extends Script
 		$this->config['modules'][] = 'web';
 		$this->config['modules'][] = 'email';
 		
-		if ($this->getIO()->askConfirmation("Povolit modul 'eshop'? (n)", false)) {
+		
+		/*if ($this->getIO()->askConfirmation("Povolit modul 'eshop'? (n)", false)) {
 			$this->config['includes'][] = '../../vendor/lqdlib/eshop/config.neon';
 			$this->config['modules'][] = 'eshop';
-		}
+		}*/
 		
-		if ($this->getIO()->askConfirmation("Povolit modul 'catalog'? (n)", false)) {
+		//if ($this->getIO()->askConfirmation("Povolit modul 'catalog'? (n)", false)) {
 			$this->config['includes'][] = '../../vendor/lqdlib/catalog/config.neon';
 			$this->config['modules'][] = 'catalog';
-		}
+		//}
 		
 		if ($this->getIO()->askConfirmation("Povolit modul 'ankety'? (n)", false)) {
 			$this->config['includes'][] = '../../vendor/lqdlib/poll/config.neon';
