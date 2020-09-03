@@ -20,7 +20,7 @@
     "jquery": "^3.4.0",
     "jquery-datetimepicker": "^2.5.20",
     "jscolor-picker": "^2.0.4",
-    "lazysizes": "^5.1.2",
+    "lazysizes": "^5.2.1",
     "lightbox2": "^2.10.0",
     "lightgallery": "^1.6.11",
     "live-form-validation": "^1.9.0",
