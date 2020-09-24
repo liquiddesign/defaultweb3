@@ -5,6 +5,7 @@
     "require": {
         "php": ">=7.1.0",
         "ext-pdo": "*",
+        "symfony/console": "~3.0",
         "nette/nette": "~2.4.0",
         "lqdlib/security": "dev-new-admin",
         "lqdlib/pages": "@dev",
